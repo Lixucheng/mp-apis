@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "moduleResolution": "node",
+        "declaration": true,
+        "declarationDir": "lib",
+        "diagnostics": true,
+        "strict": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "./lib",
+        "lib": ["es5", "es2015.promise"]
+    },
+    "include": [
+        "src/**/*",
+    ]
+}

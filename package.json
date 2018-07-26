@@ -1,0 +1,15 @@
+{
+  "name": "mp-apis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc"
+  },
+  "typings": "./lib/index.d.ts",
+  "author": "lixucheng",
+  "license": "ISC",
+  "dependencies": {
+    "@types/weixin-app": "^1.9.1"
+  }
+}
