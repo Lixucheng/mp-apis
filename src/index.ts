@@ -191,7 +191,13 @@ interface IMpApis {
   pageScrollTo(options: wx.PageScrollToOptions): void;
 }
 
-const box = tt || wx;
+let box = {};
+try {
+  box = tt;
+} catch (e) {}
+try {
+  box = wx;
+} catch (e) {}
 
 const apis = Object.keys(box).reduce((api, functionName) => {
   if (
