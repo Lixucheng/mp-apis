@@ -8,7 +8,7 @@ export interface ISystemInfo extends wx.SystemInfo {
     platform?: string;
 }
 export interface IToastOptions {
-    icon: 'success' | 'loading' | 'none';
+    icon: "success" | "loading" | "none";
     /**
      * 提示的内容
      */
@@ -78,11 +78,14 @@ interface BackgroundAudioManager {
     /** 音频加载中事件，当音频因为数据不足，需要停下来加载时会触发 */
     onWaiting(callback?: () => void): void;
 }
-interface IWxApis {
+interface IMpApis {
     /**
      * wx.request发起的是https请求。一个微信小程序，同时只能有5个网络请求连接。
      */
     request(options: wx.RequestOptions): Promise<wx.DataResponse>;
+    uploadFile(options: wx.UploadFileOptions): Promise<wx.UploadTask>;
+    chooseImage(options: wx.ChooseImageOptions): wx.TempFilesData;
+    createAnimation(options: wx.CreateAnimationOptions): wx.Animation;
     getUserInfo(options?: wx.GetUserInfoOptions): Promise<IUserInfoResponse>;
     login(option?: wx.LoginOptions): Promise<wx.LoginResponse>;
     createInnerAudioContext(): wx.InnerAudioContext;
@@ -107,7 +110,8 @@ interface IWxApis {
          */
         cancel: boolean;
     }>;
-    showToast(IToastOptions: any): Promise<void>;
+    showToast(options: IToastOptions): Promise<void>;
+    hideToast(): void;
     playBackgroundAudio(options: wx.PlayBackgroundAudioOptions): Promise<void>;
     getBackgroundAudioManager(): BackgroundAudioManager;
     startPullDownRefresh(): any;
@@ -119,11 +123,13 @@ interface IWxApis {
         tapIndex: number;
     }>;
     switchTab(options: wx.SwitchTabOptions): Promise<void>;
+    reLaunch(options: wx.ReLaunchOptions): void;
     showLoading(options: wx.LoadingOptions): Promise<any>;
     hideLoading(): Promise<void>;
     createVideoContext(id: string): wx.VideoContext;
     createSelectorQuery(): wx.SelectorQuery;
     createIntersectionObserver(): any;
+    pageScrollTo(options: wx.PageScrollToOptions): void;
 }
-declare const apis: IWxApis;
+declare const apis: IMpApis;
 export default apis;
