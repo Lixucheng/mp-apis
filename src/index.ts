@@ -103,6 +103,15 @@ interface BackgroundAudioManager {
   onWaiting(callback?: () => void): void;
 }
 
+interface GetUserInfoOptions {
+  // 是否带上登录态信息
+  withCredentials?: boolean;
+  // 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。默认为en
+  lang?: string;
+  // 超时时间，单位 ms
+  timeout?: number;
+}
+
 interface IMpApis {
   /**
    * wx.request发起的是https请求。一个微信小程序，同时只能有5个网络请求连接。
@@ -115,7 +124,7 @@ interface IMpApis {
 
   createAnimation(options: wx.CreateAnimationOptions): wx.Animation;
 
-  getUserInfo(options?: wx.GetUserInfoOptions): Promise<IUserInfoResponse>;
+  getUserInfo(options?: GetUserInfoOptions): Promise<IUserInfoResponse>;
 
   login(option?: wx.LoginOptions): Promise<wx.LoginResponse>;
 

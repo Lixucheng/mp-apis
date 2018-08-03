@@ -78,6 +78,11 @@ interface BackgroundAudioManager {
     /** 音频加载中事件，当音频因为数据不足，需要停下来加载时会触发 */
     onWaiting(callback?: () => void): void;
 }
+interface GetUserInfoOptions {
+    withCredentials?: boolean;
+    lang?: string;
+    timeout?: number;
+}
 interface IMpApis {
     /**
      * wx.request发起的是https请求。一个微信小程序，同时只能有5个网络请求连接。
@@ -86,7 +91,7 @@ interface IMpApis {
     uploadFile(options: wx.UploadFileOptions): Promise<wx.UploadTask>;
     chooseImage(options: wx.ChooseImageOptions): wx.TempFilesData;
     createAnimation(options: wx.CreateAnimationOptions): wx.Animation;
-    getUserInfo(options?: wx.GetUserInfoOptions): Promise<IUserInfoResponse>;
+    getUserInfo(options?: GetUserInfoOptions): Promise<IUserInfoResponse>;
     login(option?: wx.LoginOptions): Promise<wx.LoginResponse>;
     createInnerAudioContext(): wx.InnerAudioContext;
     navigateTo(options: wx.NavigateToOptions): void;
